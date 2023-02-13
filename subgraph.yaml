@@ -1,0 +1,60 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: veYFI
+    network: mainnet
+    source:
+      startBlock: 15974600
+      address: '0x90c1f9220d90d3966FbeE24045EDd73E1d588aD5'
+      abi: veYFI
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Registry
+      abis:
+        - name: veYFI
+          file: ./abis/veYFI.json
+      eventHandlers:
+        - event: ModifyLock(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleModifyLock
+        #- event: Withdraw(indexed address,uint256,uint256)
+        #  handler: handleWithdraw
+        - event: Penalty(indexed address,uint256,uint256)
+          handler: handlePenalty
+        - event: Supply(uint256,uint256,uint256)
+          handler: handleSupply
+        - event: Initialized(address,address)
+          handler: handleInitialized
+      file: ./src/mappings/veYFIMappings.ts
+
+templates:
+  - name: YFIRewardPool
+    kind: ethereum/contract
+    network: mainnet
+    source:
+      abi: YFIRewardPool
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mappings/yfiRewardPoolMappings.ts
+      entities:
+        - Account
+      abis:
+        - name: YFIRewardPool
+          file: ./abis/YFIRewardPool.json
+      eventHandlers:
+        - event: Initialized(address,uint256)
+          handler: handleInitialized
+        # - event: CheckpointToken(uint256,uint256)
+        #   handler: handleCheckpointToken
+        # - event: Claimed(indexed address,uint256,uint256,uint256)
+        #   handler: handleClaimed
+        # - event: AllowedToRelock(indexed address,indexed address,bool)
+        #   handler: handleAllowedToRelock
+        # - event: RewardReceived(indexed address,uint256)
+        #   handler: handleRewardReceived

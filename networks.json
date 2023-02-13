@@ -1,0 +1,20 @@
+{
+  "mainnet": {
+    "Registry": {
+      "address": "",
+      "startBlock": 99999999999
+    },
+    "GaugeFactory": {
+      "address": "",
+      "startBlock": 999999999
+    },
+    "veYFI": {
+      "address": "0x90c1f9220d90d3966FbeE24045EDd73E1d588aD5",
+      "startBlock": 15974600
+    },
+    "YFIRewardPool": {
+      "address": "0xb287a1964AEE422911c7b8409f5E5A273c1412fA",
+      "startBlock": 15974600
+    }
+  }
+}
