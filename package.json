@@ -4,7 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --product hosted-service rareweasel/yearn-veyfi-ethereum-subgraph",
+    "deploy": "graph deploy --product hosted-service yearn/yearn-veyfi-ethereum-subgraph",
     "test": "graph test"
   },
   "dependencies": {
